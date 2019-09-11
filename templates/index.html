@@ -1,0 +1,112 @@
+<!DOCTYPE HTML>
+<HTML>
+    <head>
+        <style>
+            .container{
+                width: 970px;
+                
+                margin: 0px auto;
+                
+            }
+            .user_gold_info{
+                width: 970px;
+                padding: 10px;
+            }
+            .user_gold_info h3{
+                display: inline-block;
+                vertical-align: top;
+                padding-top: 8px;
+            }
+            .user_gold_info p{
+                border: 1px solid black;
+                margin-left: 40px;
+                padding-right: 50px;
+                padding-left: 50px;
+                padding-top: 10px;
+                padding-bottom: 10px;
+                font-size: 20px;
+                display: inline-block;
+                vertical-align: top
+            }
+            .ninja_farm, .ninja_cave, .ninja_house, .ninja_casino{
+                width: 225px;
+                height: 225px;
+                margin-left: 10px;
+                display: inline-block;
+                vertical-align: top;
+                border: 1px solid black;
+            }
+            .ninja_places h2{
+                margin-left: 80px;
+            }
+            .ninja_places p{
+                margin-left: 50px; 
+                margin-top: 35px;
+
+            }
+            .ninja_places input:nth-child(2){
+                margin-left: 50px; 
+                margin-top: 35px;
+                width: 120px;
+                height: 45px;
+                border: 1px solid black;
+                border-radius: 10px;
+                font-size: 17px;
+            }
+            .activity_info{
+                width: 965px;
+                margin-left: 6px;
+                border: 1px solid black;
+            }
+        </style>
+        <title>Ninja Gold</title>
+    </head>
+    <body>
+        <div class='container'>
+            <div class='user_gold_info'>
+                <h3>Your Gold : </h3>
+                <p>{{session['points']}}</p> 
+            </div>
+            <div class="ninja_places">
+                <div class="ninja_farm">
+                    <h2>Farm</h2>
+                    <p>(earns 10-20 golds)</p>
+                    <form action="/process_money" method="post">
+                        <input type="hidden" name="farm_opt" value="farm" />
+                        <input type="submit" value="Find Gold!"/>
+                    </form>
+                </div>
+                <div class="ninja_cave">
+                    <h2>Cave</h2>
+                    <p>(earns 5-10 golds)</p>
+                    <form action="/process_money" method="post">
+                        <input type="hidden" name="cave_opt" value="cave" />
+                        <input type="submit" value="Find Gold!"/>
+                    </form>   
+                </div>
+                <div class="ninja_house">
+                    <h2>House</h2>
+                    <p>(earns 2-5 golds)</p>
+                    <form action="/process_money" method="post">
+                        <input type="hidden" name="house_opt" value="house" />
+                        <input type="submit" value="Find Gold!"/>
+                    </form>
+                </div>
+                <div class="ninja_casino">
+                    <h2>Casino</h2>
+                    <p>(earns/takes 0-50 golds)</p>
+                    <form action="/process_money" method="post">
+                        <input type="hidden" name="casino_opt" value="casino" />
+                        <input type="submit" value="Find Gold!"/>
+                    </form>
+                </div>
+            </div>
+            <div>
+                <h3>Activities</h3>
+                <div class='activity_info'>
+                    {{session['activity']|safe}}
+                </div>
+            </div>
+        </div>
+    </body>
+</HTML>
